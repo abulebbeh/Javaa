@@ -11,7 +11,7 @@ public class Candle {
 
     public void setHeight(int height) {
         this.height = height;
-        this.price = 2.00 * height;
+        this.price = 2 * height;
     }
 
     public String getColor() {
