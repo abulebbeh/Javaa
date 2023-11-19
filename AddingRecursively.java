@@ -1,27 +1,31 @@
 import java.util.Scanner;
-public class AddingRecursively{
-    public static void main(String[] args){
-        Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter the first number >> ");
-        int firstInt = scanner.nextInt();
-        System.out.print("Enter a second number >> ");
-        int secondInt = scanner.nextInt();
-
-        if(firstInt > secondInt){
-            System.out.println("Enter a number larger than " + firstInt);
-            return;
-        }
-
-        int result = sum(firstInt, secondInt);
-        System.out.println("The sum of all the numbers between " + firstInt + " and " + secondInt + " is " + result);
-    }
-        public static int sum(int start, int end){
-            if(start == end){
-                return start;
-            } 
-            else{
-                return start + sum(start + 1, end);
+public class AddingRecursively {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int a, b;
+        System.out.print("Enter a number >> ");
+        a = input.nextInt();
+        System.out.print("Enter another number that is greater than the first number >> ");
+        b = input.nextInt();
+        
+        while (true) {
+            if (a < b)
+                break;
+            else {
+                System.out.print("Enter a number >> ");
+                a = input.nextInt();
+                System.out.print("Enter another number that is greater than the first number >> ");
+                b = input.nextInt();
             }
         }
+
+        System.out.println("The sum of all the numbers between" + a + " and " + b + " is " + sum(a, b));
+    }
+
+    public static int sum(int a, int b) {
+        if (a == b)
+            return a;
+        return a + sum(a + 1, b);
+    }
 }
