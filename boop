@@ -1,46 +1,32 @@
-import java.util.*;
-class RemoveNumber
-{
-	public static void main(String[] args) 
-	{
-	    Scanner sc=new Scanner(System.in);
-	    int num;
-	    String val;
-	    
-	    //create ArrayList type Integer
-	    List<Integer> list=new ArrayList<Integer>();  
-		System.out.println("Enter integers or ZZZ to stop: ");
-		while(true)
-		{
-		    val=sc.next();  //get input from usre
-		    //check input
-		    if(val.equals("ZZZ"))
-		        break;
-		    else
-		    {
-		        //convert string to number
-	            int tmp=Integer.parseInt(val);
-	            //add value to ArrayList
-		        list.add(tmp);
-		    }
-		}
-		
-	    System.out.println("Numbers: ");
-	    //print ArrayList elements
-		for(Integer number:list)  
-            System.out.print(number+" ");  
-            
-    
-	    System.out.print("\nEnter a number to eliminate >> ");
-	    num=sc.nextInt();  //take number from user to remove from ArrayList
-	    
-	    //remove number from ArrayList 
-	    list.remove(Integer.valueOf(num));
-	    
-	    //print new ArrayList
-	    System.out.println("Numbers: ");
-            for(Integer number:list)  
-            System.out.print(number+" ");  
-            
-	} 
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class RemoveNumber{
+    public static void main(String args[]) {
+        Scanner input = new Scanner(System.in);
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        String user = "0";
+        boolean repeat = true;
+        System.out.println("Enter integers or ZZZ to stop:");
+        for(int i = 0; i < 4 || repeat == true; i++){
+            repeat = true;
+            user = input.nextLine();
+            if(user != "ZZZ"){
+                try{
+                    int number = Integer.parseInt(user);
+                    list.add(i, number);
+                }
+                catch (NumberFormatException ex){
+                    System.out.print("Enter a number to eliminate >> ");
+                    int remove = input.nextInt();
+                    list.remove((Integer)remove);
+                    System.out.println("Numbers:");
+                    for(int j = 0; j < list.size(); j++){
+                        System.out.print(list.get(j) + " ");
+                    }
+                    repeat = false;
+                }
+            }
+        }
+    }
 }
