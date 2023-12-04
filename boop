@@ -1,32 +1,41 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
-public class RemoveNumber{
-    public static void main(String args[]) {
+public class RemoveNumber {
+    public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        String user = "0";
-        boolean repeat = true;
-        System.out.println("Enter integers or ZZZ to stop:");
-        for(int i = 0; i < 4 || repeat == true; i++){
-            repeat = true;
-            user = input.nextLine();
-            if(user != "ZZZ"){
-                try{
-                    int number = Integer.parseInt(user);
-                    list.add(i, number);
-                }
-                catch (NumberFormatException ex){
-                    System.out.print("Enter a number to eliminate >> ");
-                    int remove = input.nextInt();
-                    list.remove((Integer)remove);
-                    System.out.println("Numbers:");
-                    for(int j = 0; j < list.size(); j++){
-                        System.out.print(list.get(j) + " ");
-                    }
-                    repeat = false;
-                }
+        int num;
+        String val;
+        ArrayList list = new ArrayList();
+        System.out.println("Enter integers or ZZZ to quit");
+        while (true) {
+            val = input.next();
+            if (val.equals("ZZZ")) {
+                break;
             }
+            num = Integer.parseInt(val);
+            list.add(num);
+        }
+        Iterator itez = list.iterator();
+
+        System.out.println("Number:");
+        while (itez.hasNext()) {
+            System.out.print(itez.next());
+            System.out.print(" ");
+        }
+        System.out.println(" ");
+        System.out.println("Enter number to ELiminate>>");
+        num = input.nextInt();
+        itez = list.iterator();
+        while (itez.hasNext()) {
+            if (itez.next() == num) {
+                itez.remove();
+            }
+        }
+        itez = list.iterator();
+        System.out.println("Numbers:");
+        while (itez.hasNext()) {
+            System.out.print(itez.next());
+            System.out.print(" ");
         }
     }
 }
